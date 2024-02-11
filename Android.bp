@@ -37,3 +37,67 @@ cc_prebuilt_library_shared {
         "libvndksupport",
     ],
 }
+
+cc_prebuilt_library_shared {
+    name: "libcamera_ispinterface_jni.xiaomi",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: ["prebuilt/libcamera_ispinterface_jni.xiaomi.so"],
+        },
+    },
+    system_ext_specific: true,
+    check_elf_files: false,
+    required: [
+        "libmtkisp_metadata_sys",
+        "vendor.mediatek.hardware.camera.isphal@1.0"
+    ],
+}
+
+cc_prebuilt_library_shared {
+    name: "libmtkisp_metadata_sys",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: ["prebuilt/libmtkisp_metadata_sys.so"],
+        },
+    },
+    system_ext_specific: true,
+    shared_libs: [
+        "libc",
+        "libc++",
+        "libdl",
+        "liblog",
+        "libm",
+        "libutils"
+    ],
+}
+
+cc_prebuilt_library_shared {
+    name: "vendor.mediatek.hardware.camera.isphal@1.0",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: ["prebuilt/vendor.mediatek.hardware.camera.isphal@1.0.so"],
+        },
+    },
+    system_ext_specific: true,
+    shared_libs: [
+        "android.hardware.graphics.common@1.0",
+        "android.hardware.graphics.common@1.1",
+        "libdl",
+        "libc",
+        "libc++",
+        "libcutils",
+        "libhidlbase",
+        "liblog",
+        "libm",
+        "libutils"
+    ],
+}
